@@ -1,0 +1,49 @@
+http_error:
+    bad_request: 'Les paramêtres fournis pour la requête ne sont pas valides.'
+    forbidden: 'Vous n''avez pas les droits d''accéder à cette resource.'
+    unexpected_error: 'Une erreur inattendue est survenue pendant le traitement de la requête.'
+    service_unavailable: 'La demande n''a pas pu être traitée en raison d''un problème système.'
+
+database:
+    unexpected_error: 'Une erreur inattendue est survenue pendant le traitement de la requête.Cela provient de la base de données.'
+
+tokens:
+    errors: 'Une erreurs inattendue est survenue pendant la lecture du token !'
+    not_valide: 'Ce token n''est pas valide !'
+    expired: 'Ce token est expiré !'
+    unchecked: 'Ce token n''est pas vérifié !'
+
+user:
+    user_data_error: 'L''utilisateur n''existe pas.' 
+    already_used: 'Cet utilisateur existe déjà.'
+    phone:
+        invalid: 'Ce numéro de téléphone n''est pas valide.'
+        not_match: 'Vous devez fournir un numéro'
+        blank: 'S''il vous plait entrez un numéro de téléphone.'
+    username:
+        invalid:
+            characters: 'Ce nom d''utilisateur n''est pas valide, il ne peut pas contenir les caractères `@`, `/`, tabulation et espace et doit être un mot entier.'
+            composition: 'Ce nom d''utilisateur n''est pas valide, il doit être composé d''au moins une lettre.'
+        already_used: 'Ce nom d''utilisateur est déjà utilisé.'
+        blank: 'S''il vous plait entrez un nom d''utilisateur.'
+    email:
+        invalid: 'Cette adresse n''est pas valide, elle est incorrecte.'
+        already_used: 'Cette adresse est déjà utilisée.'
+        blank: 'S''il vous plait entrez une adresse électronique.'
+    password:
+        short: 'Le mot de passe n''est pas valide, veuillez recommencer en utilisant au moins 8 caractères.'
+        long: 'Le mot de passe n''est pas valide, veuillez recommencer en utilisant pas plus de 4096 charactères.'
+        mismatch: 'Le mot de passe est différent du premier.'
+        equal_username: 'Veuillez changer de mot de passe, utilisez-en un différent de username.'
+        equal_email: 'Veuillez changer de mot de passe, utilisez-en un différent de votre email.'
+        equal_phone_number: 'Veuillez changer de mot de passe, utilisez-en un qui ne contient pas votre numéro de téléphone.'
+    first_name:
+        blank: 'S''il vous plait entrez un prénom.'
+    last_name:
+        blank: 'S''il vous plait entrez un nom.'
+    account_expires_at:
+        invalid: 'Entrez une date valide au format ISO 8601.'
+    credentials_expires_at:
+        invalid: 'Entrez une date valide au format ISO 8601.'
+    current_password:
+        invalid: 'Le mot de passe est invalide.'

@@ -1,0 +1,48 @@
+http_error:
+    bad_request: 'The parameters supplied for the request are not valid.'
+    forbidden: 'You do not have access rights to this resource.'
+    unexpected_error: 'An unexpected error occurred while processing the request.'
+    service_unavailable: 'The request could not be processed due to a system problem.'
+
+database:
+    unexpected_error: 'An unexpected error occurred while processing the request.This comes from the database.'
+
+tokens:
+    errors: 'An unexpected error occurred while reading the token !'
+    not_valide: 'This token is not valid !'
+    expired: 'This token has expired !'
+    unchecked: 'This token is not verified !'
+
+user:
+    user_data_error: 'This user doesn''t exist!' 
+    phone:
+        invalid: 'This phone number is not valid !'
+        not_match: 'You must provide a phone number'
+        blank: 'Please enter a phone number'
+    username:
+        invalid:
+            characters: 'This username is not valid, it cannot contain the characters `@`, `/`, tab and space and must be a whole word.'
+            composition: 'This username is not valid, it must be composed of at least one letter.'
+        already_used: 'This username is already used.'
+        blank: 'Please enter a username.'
+    email:
+        invalid: 'This address is not valid'
+        already_used: 'This mail already exists!'
+        blank: 'Please enter a email'
+    password:
+        short: 'The password is not valid, please try again using at least 8 characters.'
+        long: 'The password is not valid, please try again using no more than 4096 characters.'
+        mismatch: 'The password is different from the first one.'
+        equal_username: 'Please change your password, use a different one from username.'
+        equal_email: 'Please change your password, use a different one from your email.'
+        equal_phone_number: 'Please change your password, use one that does not contain your phone number.'
+    first_name:
+        blank: 'Please enter the first name'
+    last_name:
+        blank: 'Please enter the last name'
+    account_expires_at:
+        invalid: 'Enter a valid date in ISO 8601 format.'
+    credentials_expires_at:
+        invalid: 'Enter a valid date in ISO 8601 format.'
+    current_password:
+        invalid: 'The password is invalid.'

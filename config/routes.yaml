@@ -1,0 +1,15 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+
+api_tokens_create:
+    path: /{version}/{protocol}/tokens
+    methods: [POST]
+
+api_refresh_token_revoke:
+    path: /{version}/{protocol}/tokens/revoke
+    methods: [GET]
+
+api_refresh_token_create:
+    path: /{version}/{protocol}/tokens/refresh
+    controller: gesdinet.jwtrefreshtoken::refresh
