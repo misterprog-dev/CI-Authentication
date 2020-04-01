@@ -8,7 +8,7 @@ api_tokens_create:
 
 api_refresh_token_revoke:
     path: /{version}/{protocol}/tokens/revoke
-    methods: [GET]
+    methods: [DELETE]
 
 api_refresh_token_create:
     path: /{version}/{protocol}/tokens/refresh

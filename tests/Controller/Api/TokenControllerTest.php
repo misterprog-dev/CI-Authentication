@@ -73,7 +73,7 @@ class TokenControllerTest extends AbstractControllerTest
     { 
         $this->loadFixture(new AppFixtures());
         $client = $this->createAuthenticatedClient();
-        $client->request('GET', '/v1/rest/tokens/revoke', [], [], 
+        $client->request('DELETE', '/v1/rest/tokens/revoke', [], [], 
         [
 			'CONTENT_TYPE' => 'application/json',
             'HTTP_Accept' => 'application/json'

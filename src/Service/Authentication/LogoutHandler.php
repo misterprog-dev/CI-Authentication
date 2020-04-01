@@ -34,7 +34,7 @@ class LogoutHandler implements LogoutHandlerInterface, LogoutSuccessHandlerInter
         $this->databaseConnection->exec(sprintf('
             DELETE FROM refresh_tokens
             WHERE username = "%s"
-        ', $authenticatedUser->getEmail()));
+        ', $authenticatedUser->getUsername()));
     }
 
     public function onLogoutSuccess(Request $request)

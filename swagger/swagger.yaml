@@ -1,0 +1,228 @@
+openapi: 3.0.0
+
+info:
+  title: API authentication
+  description: Implementation of Api authentication système
+  version: "1.0"
+  contact:
+    name: DIAKITE SOUMAILA
+    email: soumaila.diakite@veone.net
+
+servers:
+  - url: http://{username}:{port}/{basePath}
+    description: Authentication server
+    variables:
+      username:
+        default: localhost
+      port:
+        enum:
+          - '1025'
+        default: '1025'
+      basePath:
+        default: v1/rest
+
+paths:
+  /users:
+    post:
+      summary: Save user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:                
+                username:
+                  type: string
+                email:
+                  type: string
+                firstName:
+                  type: string
+                lastName:
+                  type: string
+                phoneNumber:
+                  type: string
+                password:
+                  type: string               
+      responses:
+        '204':
+          description: ''
+        '409':
+          description: User already exists !
+        '500':
+          description: Database server errors, please contact your database administrator !
+        default:
+          description: Unexpected error
+
+    get:
+      summary: Activate user account after registration
+      parameters:
+        - name: token
+          in: query
+          required: true
+          description: User confirmation token
+          schema: 
+            type: string
+            format: string
+      responses:
+        200:
+          description: ''
+        404:
+          description: User data errors, check confirmation token
+        500:
+          description: Database server errors, please contact your database administrator !
+        default:
+          description: Unexpected error
+
+  /tokens:
+    post:
+      summary: Create jwt for user   
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                password:
+                  type: string              
+      responses:
+        200:
+          description: array of token and the refresh associated with it
+        400:
+          description: http bad request, see the user informations
+        
+  /tokens/validate:
+    get:
+      summary: validate user jwt token
+      security:
+        - bearerAuth: []      
+      responses:
+        400:
+          description: http bad request
+        401:
+          description: Invalid JWT token, may be it's expired !
+        204:
+          description: ''
+  
+  /tokens/list:
+    get:
+      summary: lists user refresh token
+      security:
+        - bearerAuth: []    
+      responses:
+        400:
+          description: http bad request
+        200:
+          description: array of refresh token
+    
+  /tokens/revoke:
+    delete:
+      summary: revoke user refresh token
+      security:
+        - bearerAuth: []    
+      responses:
+        302:
+          description: Logout user
+        401:
+          description: Invalid JWT token, may be it's expired !
+  
+  /tokens/refresh:
+    post:
+      summary: refresh user jwt token
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                refresh_token:
+                  type: string
+      responses:
+        200:
+          description: user new token
+        401:
+          description: Invalid jwt refresh token !
+
+  /index:
+    get:
+      summary: Go to index page
+      security:
+        - bearerAuth: []    
+      responses:
+        200:
+          description: Go to index page
+        401:
+          description: Invalid jwt token !
+
+components:
+  schemas:
+    User:
+      properties:
+        username:
+          type: string
+        email:
+          type: string
+          format: email
+        phoneNumber:
+          type: string
+        password:
+          type: string
+        roles:
+          type: array
+          format: array
+        firstName:
+          type: string
+        lastName:
+          type: string
+        enabled:
+          type: boolean
+        locked:
+          type: boolean
+        lastLogin:
+          type: string
+          format: datetime
+        accountExpiresAt:
+          type: string
+          format: datetime
+        credentialsExpiresAt:
+          type: string
+          format: datetime
+        confirmationToken:
+          type: string
+        passwordRequestedAt:
+          type: string
+          format: datetime
+        plainPassword:
+          type: string
+
+      required:
+        - username
+        - email
+        - password
+
+    refresh_tokens:
+      properties:
+        id:
+          type: integer
+        refresh_token:
+          type: string
+        username:
+          type: string
+        valid:
+          type: string
+          format: datetime
+      
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  
+  responses:
+    UnauthorizedError:
+      description: Access token is missing or invalid
+    

@@ -82,7 +82,7 @@ class TokenController extends AbstractController
       $data = $this->databaseConnection->query(sprintf('
           SELECT refresh_token FROM refresh_tokens
           WHERE username = "%s"
-      ', $user->getEmail()));
+      ', $user->getUsername()));
       $data->execute();
       $result = [];
       foreach ($data as $value) {
