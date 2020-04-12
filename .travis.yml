@@ -2,17 +2,10 @@ language: php
 
 php:
   - '7.4.4'
-
-env:
-  - SYMFONY_VERSION="4.0.*" DB=mysql
  
 services:
   - docker
- 
-install:
-  - composer install
-  - php bin/console doctrine:database:create --env=test
-  - php bin/console doctrine:schema:create --env=test
 
 script:
-  - phpunit
+  - composer install
+  - ./vendor/bin/simple-phpunit
