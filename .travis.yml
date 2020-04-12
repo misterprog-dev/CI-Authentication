@@ -8,4 +8,4 @@ services:
 
 script:
   - composer install
-  - php bin/phpunit
+  - bin/phpunit
