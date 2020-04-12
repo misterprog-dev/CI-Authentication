@@ -105,6 +105,18 @@ class UserControllerTest extends AbstractControllerTest
         $this->assertResponseStatusCodeSame(200, $client->getResponse()->getStatusCode());                       
     }
 
+    public function testThatCanGetIndexP()
+    {
+        $this->loadFixture(new AppFixtures());
+        // $client = $this->createAuthenticatedClient();
+        $client->request('GET', '/v1/rest/index', [], [], 
+        [
+			'CONTENT_TYPE' => 'application/json',
+            'HTTP_Accept' => 'application/json'
+        ]);
+        $this->assertResponseStatusCodeSame(200, $client->getResponse()->getStatusCode());                       
+    }
+
     public function testThatCannotGetIndexPage()
     {           
         $this->client->request('GET', '/v1/rest/index', [], [], 
