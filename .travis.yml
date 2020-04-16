@@ -8,4 +8,4 @@ services:
 
 script:
   - composer install
-  - ./vendor/bin/simple-phpunit
+  - php bin/phpunit
